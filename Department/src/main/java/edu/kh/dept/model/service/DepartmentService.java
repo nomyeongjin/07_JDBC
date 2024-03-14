@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import edu.kh.dept.model.dto.Department;
+import edu.kh.dept.model.exception.DepartmentInsertException;
 
 public interface DepartmentService {
 
@@ -23,6 +24,46 @@ public interface DepartmentService {
 	 * @throws SQLException
 	 */
 	int insertDepartment(Department dept) throws SQLException;
+
+
+	/** 여러부서 추가
+	 * @param deptList
+	 * @return result
+	 * @throws DepartmentInsertException
+	 */
+	int multiInsert(List<Department> deptList)throws DepartmentInsertException;
+
+
+	
+	/** 부서 삭제 서비스
+	 * @param deptId
+	 * @return result
+	 */
+	int deleteDepartment(String deptId) throws SQLException;
+
+
+	/** 부서 1행 조회
+	 * @param deptId
+	 * @return dept (부서 1행 데이터가 담긴 객체)
+	 * @throws SQLException
+	 */
+	Department selectOne(String deptId) throws SQLException;
+
+
+	/** 부서 수정 서비스
+	 * @param dept
+	 * @return result
+	 * @throws SQLException
+	 */
+	int updateDepartment(Department dept) throws SQLException;
+
+
+	/** 부서 검색
+	 * @param keyword
+	 * @return
+	 * @throws SQLException
+	 */
+	List<Department> search(String keyword) throws SQLException;
 	
 	
 	

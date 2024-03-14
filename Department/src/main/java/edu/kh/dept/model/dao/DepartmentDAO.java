@@ -15,13 +15,45 @@ public interface DepartmentDAO {
 	 */
 	List<Department> selectAll(Connection conn) throws SQLException;
 
-	/**
+	/** 부서 추가
 	 * @param conn
 	 * @param dept
 	 * @return result
 	 * @throws SQLException
 	 */
 	int insertDepartment(Connection conn, Department dept) throws SQLException;
+
+	/** 부서 삭제
+	 * @param conn
+	 * @param deptId
+	 * @return result
+	 */
+	int deleteDepartment(Connection conn, String deptId) throws SQLException;
+
+	
+	/** 부서 1행 조회
+	 * @param conn
+	 * @param deptId
+	 * @return dept
+	 * @throws SQLException
+	 */
+	Department selectone(Connection conn, String deptId) throws SQLException;
+
+	
+	/** 부서 수정
+	 * @param conn
+	 * @param dept
+	 * @return result
+	 * @throws SQLException
+	 */
+	int updateDepartment(Connection conn, Department dept) throws SQLException;
+
+	/** 부서 검색
+	 * @param conn
+	 * @return
+	 * @throws SQLException
+	 */
+	List<Department> search(Connection conn,String keyword) throws SQLException;
 
 	
 	
