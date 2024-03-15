@@ -29,11 +29,14 @@ public class SearchServlet extends HttpServlet{
 			// 검색 메소드 리스트로 저장
 			List<Department> deptList = service.search(keyword);
 			
+			// 조회 결과를 request scope에 속성으로 세팅
 			req.setAttribute("deptList", deptList);
 			
 			
 			// forword할 JSP 경로
 			String path = "/WEB-INF/views/search.jsp";
+			
+			// 요청 위임
 			req.getRequestDispatcher(path).forward(req, resp);
 			
 			

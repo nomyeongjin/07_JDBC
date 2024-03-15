@@ -211,27 +211,34 @@ public class DepartmentDAOImpl implements DepartmentDAO{
 		List<Department> deptList = new ArrayList<Department>();
 		
 		try {
-			
+			// SQL 얻어오기 | prop -> MAP 형태 컬렉션 -> K:V로 저장된 값중 KEY로 얻어옴
 			String sql = prop.getProperty("searchDepartment");
 			
+			// ? -> prepareStatement
+			// ? 가 없음 -> statement
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1,keyword);
 			
+			// SQL(SELECT) 수행 후 결과(ResultSet) 반환 받기
 			rs = pstmt.executeQuery();
 			
+			// 조회결과를 한 행씩 접근해서 컬럼값 모두 얻어오기
 			while(rs.next()) {
 				
-				String deptId     = rs.getString("DEPT_ID");
+				String deptId     = rs.getString("DEPT_ID"); 
 				String deptTitle  = rs.getString("DEPT_TITLE");
-				String locationId = rs.getString("LOCATION_ID");
+				String locationId = rs.getString(3); // 조회 결과 컬럼 순서 (권장 x)
 				
 				Department dept = new Department(deptId, deptTitle, locationId);
 				
+				// deptList에 추가
 				deptList.add(dept);
 				
 			}
 			
 		} finally {
+			
+			// 닫기
 			close(rs);
 			close(pstmt);
 		}
