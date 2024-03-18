@@ -33,9 +33,9 @@ const updateBtn = document.querySelector("#updateBtn");
 
 updateBtn.addEventListener("click",e =>{
 
-    const todoNo = e.target.dataset.todoNo;
+    const gameNo = e.target.dataset.gameNo;
 
-    location.href = `/todo/update?todoNo=${todoNo}`;
+    location.href = `/game/update?gameNo=${gameNo}`;
 
 
 

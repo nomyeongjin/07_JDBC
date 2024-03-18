@@ -48,7 +48,65 @@ SELECT COUNT(*)
 FROM TB_TODO
 WHERE COMPLETE = 'Y';
 
+--특정 할 일의 완료 여부 수정
+UPDATE TB_TODO
+SET COMPLETE = 'Y'
+WHERE TODO_NO=1;
 
+
+--특정 할 일의 완료 여부 수정
+--UPDATE TB_TODO
+--SET
+--TODO_TITLE = ?,
+--TODO_CONTENT = ?
+--WHERE TODO_NO= ?
+
+
+----------------------------------------------------------------------
+
+-- 게임 리스트 테이블
+CREATE TABLE TB_GAME(
+	GAME_NO NUMBER CONSTRAINT PK_GAME_NO PRIMARY KEY,
+	GAME_TITLE VARCHAR2(60) NOT NULL,
+	GAME_OVERVIEW VARCHAR2(4000),
+	RELEASE_DATE DATE NOT NULL
+);
+
+COMMENT ON COLUMN TB_GAME.GAME_NO IS '게임 번호';
+COMMENT ON COLUMN TB_GAME.GAME_TITLE IS '게임 제목';
+COMMENT ON COLUMN TB_GAME.GAME_OVERVIEW IS '게임 개요';
+COMMENT ON COLUMN TB_GAME.RELEASE_DATE IS '게임 출시일';
+
+-- 할일 번호(GAME_NO) 번호 생성기(SEQUENCE) 만들기
+CREATE SEQUENCE SEQ_GAME_NO NOCACHE;
+
+INSERT INTO TB_GAME VALUES(SEQ_GAME_NO.NEXTVAL,'용과 같이8','두 명의 더 큰 영웅 이치반 가스가와 카즈마 키류는 운명의 손, 혹은 더 불길한 무언가에 의해 함께 모입니다. 일본에서 살아보고 태평양에 걸쳐 있는 거대한 RPG 모험에서 하와이가 제공하는 모든 것을 탐험하세요.','2024-01-26','JRPG/액션/어드벤처');
+INSERT INTO TB_GAME VALUES(SEQ_GAME_NO.NEXTVAL,'Cyberpunk 2077','사이버펑크 2077은 파워, 화려함, 끊임없는 신체 변형에 집착하는 위험한 메가폴리스인 나이트 시티의 어두운 미래를 배경으로 한 오픈 월드, 액션 어드벤처 RPG입니다.','2020-12-10','사이버펑크/오픈월드/RPG');
+INSERT INTO TB_GAME VALUES(SEQ_GAME_NO.NEXTVAL,'발더스 게이트 3','발두르의 게이트 3는 던전 앤 드래곤즈의 우주를 배경으로 한 스토리가 풍부한 파티 기반 RPG로, 여러분의 선택이 동료애와 배신, 생존과 희생, 절대 권력의 유혹에 대한 이야기를 형성합니다.','2023-08-04','RPG/던전앤드래곤/어드벤처');
+
+ROLLBACK;
+
+ALTER TABLE TB_GAME ADD(GAME_GENRE VARCHAR2(60));
+
+DELETE FROM TB_GAME WHERE GAME_NO = '11';
+
+INSER INTO TB_GAME(GAME_GENRE) VALUES('JRPG/액션/모험') WHERE GAME_NO = '6';
+
+ALTER TABLE TB_GAME
+MODIFY GAME_GENRE NOT NULL;
+
+
+SELECT * FROM TB_GAME;
+
+UPDATE TB_GAME SET GAME_NO='2' WHERE GAME_TITLE='Cyberpunk 2077';
+
+COMMIT;
+
+
+-- 할 일 목록 조회
+SELECT GAME_NO, GAME_TITLE, GAME_GENRE , TO_CHAR(RELEASE_DATE, 'YYYY-MM-DD') RELEASE_DATE
+FROM TB_GAME
+ORDER BY GAME_NO;
 
 
 
