@@ -10,10 +10,12 @@
 
     
     <c:if test="${empty gameList}" >
-        <h3>검색 결과가 없습니다.</h3>
+        <h4>검색 결과가 없습니다.</h4>
     </c:if>
+    <link rel="stylesheet" href="/resources/css/main.css">
 </head>
 <body>
+<div id="container1">
     <h1>${param.search} 검색 결과</h1>
 
     <c:if test="${not empty gameList}" >
@@ -31,8 +33,8 @@
                     <tr>
                         <td>${game.gameNo}</td>
                         
-                        <td>
-                        <a href="/game/detail?gameNo=${game.gameNo}">${game.gameTitle}</a>
+                        <td class="aTag">
+                        <a href="/game/detail?gameNo=${game.gameNo}" >${game.gameTitle}</a>
                         </td>
                         
                         <td>${game.gameGenre}</td>
@@ -46,6 +48,7 @@
         </table>
     </c:if>
     <button id="goToList">목록으로</button>
+</div>
     
     <script src="/resources/js/detail.js"></script>
 </body>

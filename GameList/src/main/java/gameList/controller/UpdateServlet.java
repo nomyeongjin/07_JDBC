@@ -65,7 +65,7 @@ public class UpdateServlet extends HttpServlet{
 			String message = null;
 			
 			if(result > 0) {
-				path = "/";
+				path = "/game/detail?gameNo="+gameNo;
 				message = "수정 성공";
 				
 			}else {

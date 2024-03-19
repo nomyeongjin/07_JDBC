@@ -13,18 +13,18 @@
 <body>
 
 <h1>Game List</h1>
-
-<form action="/game/search" method="GET">
-<input type="text" name="search" placeholder="검색">
-<button>검색</button>
+<div class="search">
+<form action="/game/search" method="GET" class="formSearch">
+    <input type="text" name="search" class="searchbar" placeholder="제목/장르 검색">
+<button class="searchBTn">검색</button>
 </form>
-
+</div>
 <hr>
 
 <div id="container">
-    <h3>전체 게임 개수 : ${fn:length(gameList)}개</h3>
+    <h4>총 ${fn:length(gameList)}개</h4>
     
-    <table border="1" style="border-collapse : collapse;">
+    <table border="1" style="border-collapse : collapse;" class="table">
             <thead>
                 <th>번호</th>
                 <th>게임 제목</th>
@@ -38,7 +38,7 @@
                     <tr>
                         <td>${game.gameNo}</td>
                         
-                        <td>
+                        <td class="aTag">
                         <a href="/game/detail?gameNo=${game.gameNo}">${game.gameTitle}</a>
                         </td>
                         
@@ -55,20 +55,20 @@
     
     <hr>
         
-     <form action="/game/add" method = "POST">
+     <form action="/game/add" method = "POST" class="form">
             <h4>게임 추가</h4>
     
             <div>
-                제목 : <input type="text" name="gameTitle">
+                제목 : <input type="text" name="gameTitle" class="input">
             </div>
             <div>
                 <textarea name="gameOverview" cols="50" rows="5" placeholder="게임 개요 작성"></textarea>
             </div>
             <div>
-                장르 : <input type="text" name="gameGenre">
+                장르 : <input type="text" name="gameGenre" class="input">
             </div>
             <div>
-                출시일 : <input type="date" name="releaseDate" placeholder="YYYY-MM-DD">
+                출시일 : <input type="date" name="releaseDate" placeholder="YYYY-MM-DD" class="input">
             </div>
             <button>추가</button>
         </form>

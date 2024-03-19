@@ -22,9 +22,8 @@ a{
     text-decoration: none; /* 밑줄 제거 */
     
 }
-a:hover{
-    background-color: black;
-    color: white;
+.aTag:hover{
+    background-color: rgb(175, 175, 175);
 }
 
 body{
@@ -34,11 +33,16 @@ body{
     /* 화면 (기기, 브라우저) 크기가 작아져도 유지해야할 최소 너비/높이 */
     min-width: 768px;
     min-height: 100vh; /* 화면 높이 */
-    justify-content: center;
 }
 
 h1{
     font-family:'DNFBitBitv2';
+    margin: auto;
+}
+
+h3{
+    font-family:'DNFBitBitv2';
+    margin: auto;
 }
 
 h4{
@@ -52,25 +56,107 @@ button{
     border-radius: 20px;
     color: #3f3f3f;
     align-items: center;
+    width: 100px;
 }
 button:hover{
     background-color: #ddd;
 }
 
-input{
+.searchbar{
+    padding: 10px 200px 10px 50px;
+    text-align: left;
     border: none;
+    border-radius: 20px;
+    background-color: #ddd;
+    font-family: 'Pretendard-Regular';
+    position: sticky;
+    top: -1px;
+    z-index: 1000;
+    outline: none;
+}
+.input{
+    height: 20px;
+    border: none;
+    border-radius: 50px;
+    background-color: #ddd;
+    padding: 12px;
+}
+
+.input:focus {
+    outline: none;
+}
+#container{
+    display: flex;
+    margin: auto;
+
+    align-items: center;
+}
+
+#container1{
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    
+    
+    align-items: center;
 }
 table{
     display: block;
-    width: 800px;
-    padding: 10px;
-    margin-left: 50px;
+    margin: auto;
+    width: 100%;
+    max-width: 440px;
+    justify-content: center;
+    align-content: baseline;
+    margin-top: 15px;
+    margin-bottom: 15px;
+
 }
 
-#container{
-    display: flex;
-    width: 500px;
+th{
+    background-color: #ddd;
+}
 
+
+textarea{
+    border-radius: 20px;
+    background-color: #ddd;
+    width : 300px;
+    height : 300px;
+    border: none;
+    padding: 20px;
+    resize: none;
+}
+
+textarea:focus{
+
+    outline: none;
+
+}
+
+.formSearch{
+    display: flex;
+    margin: auto;
+    width: 515px;
+
+}
+
+td{
+    padding: 10px;
+}
+
+.search{
     justify-content: center;
-    align-items: center;
+}
+
+.searchBTn{
+    width: 50px;
+}
+
+.btnDiv{
+    display: flex;
+    flex-direction: row;
+}
+
+.updateBtn{
+    margin: auto;
 }
